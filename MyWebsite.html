@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bon dia!</title>
+    <!-- Use Tailwind CSS for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Google Font "Inter" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-gray-10 shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-cyan-950">Marc Garrido Casas</a>
+            <nav>
+                <ul class="flex space-x-4 text-gray-600 font-medium">
+                    <li><a href="#" class="hover:text-cyan-900 transition-colors">Home</a></li>
+                    <li><a href="#about" class="hover:text-cyan-900 transition-colors">About</a></li>
+                    <li><a href="#services" class="hover:text-cyan-900 transition-colors">Services</a></li>
+                    <li><a href="#contact" class="hover:text-cyan-900 transition-colors">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-cyan-950 text-white py-20 px-4 text-center">
+        <div class="container mx-auto">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4">
+                Embedded software engineer.
+            </h1>
+            <p class="text-lg sm:text-xl mb-8 max-w-2xl mx-auto">
+                Discover the power of web development with a clean, modern, and responsive design.
+            </p>
+            <button id="getStartedBtn" class="bg-white text-cyan-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition-colors transform hover:scale-105">
+                Get Started
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl font-bold mb-4">About Our Approach</h2>
+            <p class="text-gray-600 leading-relaxed mb-8">
+                We believe that great websites are built on a foundation of simplicity and efficiency. Using modern tools like HTML, CSS, and JavaScript, we create sites that are not only beautiful but also performant and accessible to everyone.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105">
+                    <h3 class="font-bold text-xl mb-2">Modern Design</h3>
+                    <p class="text-gray-600">Clean, elegant layouts built with a mobile-first philosophy to look amazing on any device.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105">
+                    <h3 class="font-bold text-xl mb-2">Responsive</h3>
+                    <p class="text-gray-600">Our designs adapt fluidly to different screen sizes, from phones to large monitors.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105">
+                    <h3 class="font-bold text-xl mb-2">Easy to Use</h3>
+                    <p class="text-gray-600">Intuitive navigation and a smooth user experience are at the heart of our work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-gray-100 py-16 px-4">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl font-bold mb-8">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-900 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L12 20.25M12 20.25L14.25 17M12 20.25V3M21 8h-3.25M3 8h3.25" />
+                    </svg>
+                    <h3 class="font-bold text-xl mb-2">Web Design</h3>
+                    <p class="text-gray-600">Crafting visually stunning and functional website layouts tailored to your needs.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-900 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l-7 7m7-7l7-7m-7 7L3 13" />
+                    </svg>
+                    <h3 class="font-bold text-xl mb-2">Development</h3>
+                    <p class="text-gray-600">Bringing your designs to life with clean, efficient, and well-structured code.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-900 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    <h3 class="font-bold text-xl mb-2">Support</h3>
+                    <p class="text-gray-600">Providing ongoing maintenance and support to ensure your site runs smoothly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Oneko cat follower -->
+    <script src="./js/oneko.js"></script>
+
+    <div id="lalala" style="z-index: 5; width: 302px; height: 3000px; position: absolute; pointer-events: none; background-image: url(&quot;&quot;); image-rendering: pixelated; left: 726.544px; top: 1827.23px; background-position: -96px -96px;"></div>
+
+
+
+    <section id="about" class="py-1600 px-40">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl font-bold mb-4">About Our Approach</h2>
+            <p class="text-gray-600 leading-relaxed mb-8">
+                We believe that great websites are built on a foundation of simplicity and efficiency. Using modern tools like HTML, CSS, and JavaScript, we create sites that are not only beautiful but also performant and accessible to everyone.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105">
+                    <h3 class="font-bold text-xl mb-2">Modern Design</h3>
+                    <p class="text-gray-600">Clean, elegant layouts built with a mobile-first philosophy to look amazing on any device.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105">
+                    <h3 class="font-bold text-xl mb-2">Responsive</h3>
+                    <p class="text-gray-600">Our designs adapt fluidly to different screen sizes, from phones to large monitors.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105">
+                    <h3 class="font-bold text-xl mb-2">Easy to Use</h3>
+                    <p class="text-gray-600">Intuitive navigation and a smooth user experience are at the heart of our work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-cyan-950 text-white py-4 px-4 text-center">
+        <div class="container mx-auto">
+            <p>&copy; 2025. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const promptInput = document.getElementById('promptInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const readBtn = document.getElementById('readBtn');
+        const loading = document.getElementById('loading');
+        const output = document.getElementById('output');
+
+        // Helper functions for TTS audio
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+
+   
+
+    </script>
+</body>
+</html>
