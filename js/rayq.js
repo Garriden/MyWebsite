@@ -3,7 +3,13 @@
 
 
 (function oneko() {
-  const NEKO_SPEED = 14;
+  const NEKO_SPEED = 8;
+  const FRAME_SPEED = 100;
+  const FRAME_SPEED_MOVING = 50;
+  const FRAME_RATE = -4;
+
+  let frameRate = 0;
+  let frameSpeed = FRAME_SPEED_MOVING;
 
   const isReducedMotion =
     window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
@@ -25,47 +31,23 @@
   let idleAnimationFrame = 0;
 
   const spriteSets = { // col / row.
-    idle: [[-1, -2]],
-    alert: [[-3, -3]],
+    idle:  [ [-1, -4], [-1, -3],],
+    alert: [ [-3, -4]],
     scratchSelf: [
-      [-2, -2], [-2, -2], [-2, -2], [-2, -2], [-2, -2],
       [-2, -3], [-2, -3], [-2, -3], [-2, -3], [-2, -3],
-      [-2, -2], [-2, -2], [-2, -2], [-2, -2], [-2, -2],
-      [-2, -4], [-2, -4], [-2, -4], [-2, -4], [-2, -4],],
-    tired: [[-3, -2]],
-    sleeping: [[0, -2], [0, -2], [0, -3], [0, -3],],
-    N: [
-      [-4, 0],
-      [-4, -1],
-    ],
-    NE: [
-      [-3, -0],
-      [-3, -1],
-    ],
-    E: [
-      [-2, 0],
-      [-2, -1],
-    ],
-    SE: [
-      [-1, 0],
-      [-1, -1],
-    ],
-    S: [
-      [0, 0],
-      [0, -1],
-    ],
-    SW: [
-      [-7, 0],
-      [-7, -1],
-    ],
-    W: [
-      [-6, 0],
-      [-6, -1],
-    ],
-    NW: [
-      [-5, 0],
-      [-5, -1],
-    ],
+      [-2, -4], [-2, -4], [-2, -4], [-2, -4], [-2, -4],
+      [-2, -3], [-2, -3], [-2, -3], [-2, -3], [-2, -3],
+      [-2, -5], [-2, -5], [-2, -5], [-2, -5], [-2, -5],],
+    tired: [[-3, -3]],
+    sleeping: [[0, -3], [0, -3], [0, -4], [0, -4],],
+    N:  [ [-4, 0], [-4, -1], [-4, -2],],
+    NE: [ [-3, 0], [-3, -1], [-3, -2],],
+    E:  [ [-2, 0], [-2, -1], [-2, -2],],
+    SE: [ [-1, 0], [-1, -1], [-1, -2],],
+    S:  [ [0, 0],  [0, -1],  [0, -2], ],
+    SW: [ [-7, 0], [-7, -1], [-7, -2],],
+    W:  [ [-6, 0], [-6, -1], [-6, -2],],
+    NW: [ [-5, 0], [-5, -1], [-5, -2],],
   };
 
   function init() {
@@ -91,7 +73,7 @@
     document.body.appendChild(nekoEl);
 
     // Scroll.
-    document.addEventListener("wheel", function (event) {
+    document.addEventListener("wheel", function (event) { // TODO: Scroll without moving the page, moves the cat.
       nekoPosY -= event.deltaY / 2;
       updatePos();
     });
@@ -116,7 +98,7 @@
       lastFrameTimestamp = timestamp;
     }
 
-    if(timestamp - lastFrameTimestamp > 100) {
+    if(timestamp - lastFrameTimestamp > frameSpeed) {
       lastFrameTimestamp = timestamp;
       frame();
     }
@@ -138,6 +120,7 @@
     ++idleTime;
 
     if(idleTime > 4 && Math.floor(Math.random() * 50) == 0 && idleAnimation == null) {
+      frameSpeed = FRAME_SPEED;
       let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
 
       idleAnimation =
@@ -148,27 +131,26 @@
 
     switch(idleAnimation) {
       case "sleeping":
+        frameSpeed = FRAME_SPEED;
         if(idleAnimationFrame < 30) {
           setSprite("tired", 0);
           break;
         }
         setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
-        if(idleAnimationFrame > 250) {
+        if(idleAnimationFrame > 400) {
           resetIdleAnimation();
         }
         break;
-      case "scratchWallN":
-      case "scratchWallS":
-      case "scratchWallE":
-      case "scratchWallW":
       case "scratchSelf":
+        frameSpeed = FRAME_SPEED;
         setSprite(idleAnimation, idleAnimationFrame);
-        if(idleAnimationFrame > 50) {
+        if(idleAnimationFrame > 55) {
           resetIdleAnimation();
         }
         break;
       default:
-        setSprite("idle", 0);
+        frameSpeed = FRAME_SPEED_MOVING*20;
+        setSprite("idle", idleTime);
         return;
     }
     ++idleAnimationFrame;
@@ -222,7 +204,7 @@
     const diffY = nekoPosY - mousePosY;
     const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
 
-    if(distance < NEKO_SPEED || distance < 72) {
+    if(distance < NEKO_SPEED || distance < 128) {
       idle();
       return;
     }
@@ -231,6 +213,7 @@
     idleAnimationFrame = 0;
 
     if(idleTime > 1) {
+      frameSpeed = FRAME_SPEED_MOVING;
       setSprite("alert", 0);
 
       // count down after being alerted before moving
@@ -246,10 +229,14 @@
     direction += diffX / distance < -0.5 ? "E" : "";
     setSprite(direction, frameCount);
 
-    nekoPosX -= (diffX / distance) * NEKO_SPEED;
-    nekoPosY -= (diffY / distance) * NEKO_SPEED;
+    if(frameRate++ > FRAME_RATE) {
+      frameRate = 0;
 
-    updatePos();
+      nekoPosX -= (diffX / distance) * NEKO_SPEED;
+      nekoPosY -= (diffY / distance) * NEKO_SPEED;
+
+      updatePos();
+    }
   }
 
 function updatePos() {
