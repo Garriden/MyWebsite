@@ -3,9 +3,10 @@
 
 
 (function oneko() {
-  const NEKO_SPEED = 8;
-  const FRAME_SPEED = 100;
+  const NEKO_SPEED = 10;
+  const FRAME_SPEED = 125;
   const FRAME_SPEED_MOVING = 50;
+  const FRAME_SPEED_IDLE = 1000;
   const FRAME_RATE = -4;
 
   let frameRate = 0;
@@ -32,7 +33,7 @@
 
   const spriteSets = { // col / row.
     idle:  [ [-1, -4], [-1, -3],],
-    alert: [ [-3, -4]],
+    alert: [ [-3, -4], [-3, -4], [-3, -4], [-3, -4]],
     scratchSelf: [
       [-2, -3], [-2, -3], [-2, -3], [-2, -3], [-2, -3],
       [-2, -4], [-2, -4], [-2, -4], [-2, -4], [-2, -4],
@@ -119,14 +120,14 @@
   function idle() {
     ++idleTime;
 
-    if(idleTime > 4 && Math.floor(Math.random() * 50) == 0 && idleAnimation == null) {
+    if(idleTime > 3 && Math.floor(Math.random() * 10) == 0 /*&& idleAnimation == null*/) {
       frameSpeed = FRAME_SPEED;
-      let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
+      //let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
 
-      idleAnimation =
-        avalibleIdleAnimations[
-          Math.floor(Math.random() * avalibleIdleAnimations.length)
-        ];
+      idleAnimation = "sleeping";
+        //avalibleIdleAnimations[
+        //  Math.floor(Math.random() * avalibleIdleAnimations.length)
+        //];
     }
 
     switch(idleAnimation) {
@@ -149,7 +150,7 @@
         }
         break;
       default:
-        frameSpeed = FRAME_SPEED_MOVING*20;
+        frameSpeed = FRAME_SPEED_IDLE;
         setSprite("idle", idleTime);
         return;
     }
@@ -180,6 +181,41 @@
     }
   }
 
+  function Petting()
+  {
+    frameSpeed = 1; // change to scratch fast.
+    idleAnimation = "scratchSelf";
+
+    const parent = nekoEl.parentElement;
+    const rect = nekoEl.getBoundingClientRect();
+    const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const centerX = rect.left + rect.width / 2 + scrollLeft;
+    const centerY = rect.top + rect.height / 2 + scrollTop;
+
+    let thunderIteraror = 10000;
+    while(thunderIteraror --> 0) {
+      //for(let ii = 0; ii < 8; ++ii) {
+      if(thunderIteraror % 1000 == 0) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = '⚡';
+        const offsetX = (Math.random() - 1) * 100;
+        const offsetY = (Math.random() - 1) * 100;
+        heart.style.left = `${centerX + offsetX - 32}px`;
+        heart.style.top = `${centerY + offsetY - 32}px`;
+        parent.appendChild(heart);
+
+        setTimeout(() => {
+          parent.removeChild(heart);
+        }, 1000);
+      }
+    }
+
+  }
+
+
+
   const style = document.createElement('style');
   style.innerHTML = `
 		  @keyframes heartBurst {
@@ -188,15 +224,16 @@
 		  }
 		  .heart {
 			  position: absolute;
-			  font-size: 4em;
+			  font-size: 10em;
 			  animation: heartBurst 1s ease-out;
 			  animation-fill-mode: forwards;
-			  color: #f40a7bff;
+			  color:rgb(222, 255, 38);
 		  }
 	  `;
 
   document.head.appendChild(style);
-  nekoEl.addEventListener('click', explodeHearts);
+  //nekoEl.addEventListener('click', explodeHearts);
+  nekoEl.addEventListener('click', Petting);
 
   function frame() {
     ++frameCount;
@@ -213,15 +250,17 @@
     idleAnimationFrame = 0;
 
     if(idleTime > 1) {
-      frameSpeed = FRAME_SPEED_MOVING;
+      frameSpeed = FRAME_SPEED_IDLE / 4;
       setSprite("alert", 0);
 
       // count down after being alerted before moving
       idleTime = Math.min(idleTime, 7);
       --idleTime;
+      //frameSpeed = FRAME_SPEED_MOVING;
       return;
     }
 
+    frameSpeed = FRAME_SPEED_MOVING;
     let direction;
     direction  = diffY / distance >  0.5 ? "N" : "";
     direction += diffY / distance < -0.5 ? "S" : "";
