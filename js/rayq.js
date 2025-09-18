@@ -11,6 +11,7 @@
 
   let frameRate = 0;
   let frameSpeed = FRAME_SPEED_MOVING;
+  let timesPettedThisSession = 0;
 
   const isReducedMotion =
     window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
@@ -56,12 +57,12 @@
     nekoEl.ariaHidden = true;
     nekoEl.style.width = "128px";
     nekoEl.style.height = "128px";
-    nekoEl.style.position = "fixed";
+    nekoEl.style.position = "absolute";
     nekoEl.style.pointerEvents = "auto";
     nekoEl.style.imageRendering = "pixelated";
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
-    nekoEl.style.zIndex = 2147483647;
+    nekoEl.style.zIndex = Number.MAX_SAFE_INTEGER;
 
     //let nekoFile = "./images/oneko.gif"
     let nekoFile = "./images/rayqq.gif"
@@ -72,13 +73,22 @@
     nekoEl.style.backgroundImage = `url(${nekoFile})`;
 
     document.body.appendChild(nekoEl);
-
+/*
     // Scroll.
-    document.addEventListener("wheel", function (event) { // TODO: Scroll without moving the page, moves the cat.
-      nekoPosY -= event.deltaY / 2;
+    document.addEventListener("wheel", function (event) {
+        // Check if the user is scrolling up AND is at the top of the page
+      if((event.deltaY < 0 && window.scrollY === 0) || (event.deltaY > 0 && window.scrollY === 0)) {
+        return;
+      }
+      // Check if the user is scrolling down AND is at the bottom of the page
+      if(event.deltaY > 0 && (window.scrollY + window.innerHeight) >= document.body.scrollHeight) {
+        return;
+      }
+
+      nekoPosY -= event.deltaY / 1.5;
       updatePos();
     });
-
+*/
     document.addEventListener("mousemove", function (event) {
       mousePosX = event.clientX;
       mousePosY = event.clientY;
@@ -120,7 +130,7 @@
   function idle() {
     ++idleTime;
 
-    if(idleTime > 3 && Math.floor(Math.random() * 10) == 0 /*&& idleAnimation == null*/) {
+    if(idleTime > 3 && Math.floor(Math.random() * 10) == 0 && idleAnimation == null) {
       frameSpeed = FRAME_SPEED;
       //let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
 
@@ -183,53 +193,64 @@
 
   function Petting()
   {
+    ++timesPettedThisSession;
+
     frameSpeed = 1; // change to scratch fast.
     idleAnimation = "scratchSelf";
-
+  
     const parent = nekoEl.parentElement;
     const rect = nekoEl.getBoundingClientRect();
     const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const centerX = rect.left + rect.width / 2 + scrollLeft;
     const centerY = rect.top + rect.height / 2 + scrollTop;
-
-    let thunderIteraror = 10000;
-    while(thunderIteraror --> 0) {
-      //for(let ii = 0; ii < 8; ++ii) {
-      if(thunderIteraror % 1000 == 0) {
+  
+    let thunderCount = 20;
+    let delay = 0; // Starting delay in milliseconds
+  
+    for(let ii = 0; ii < thunderCount; ++ii) {
+      const randomDelay = Math.random() * 500; // Delay each thunder.
+      
+      // Create the icon with a delay
+      setTimeout(() => {
         const heart = document.createElement('div');
         heart.className = 'heart';
         heart.textContent = '⚡';
+        
         const offsetX = (Math.random() - 1) * 100;
         const offsetY = (Math.random() - 1) * 100;
+        
         heart.style.left = `${centerX + offsetX - 32}px`;
         heart.style.top = `${centerY + offsetY - 32}px`;
+        
         parent.appendChild(heart);
-
+  
         setTimeout(() => {
           parent.removeChild(heart);
         }, 1000);
-      }
+      }, delay + randomDelay);
+      
+      // Increase the base delay for the next thunder
+      delay += 100;
     }
-
   }
 
 
 
   const style = document.createElement('style');
   style.innerHTML = `
-		  @keyframes heartBurst {
-			  0% { transform: scale(0); opacity: 1; }
+      @keyframes heartBurst {
+        0% { transform: scale(0); opacity: 1; }
         100% { transform: scale(1); opacity: 0; }
-		  }
-		  .heart {
-			  position: absolute;
-			  font-size: 10em;
-			  animation: heartBurst 1s ease-out;
-			  animation-fill-mode: forwards;
-			  color:rgb(222, 255, 38);
-		  }
-	  `;
+      }
+      .heart {
+        position: absolute;
+        font-size: 10em;
+        animation: heartBurst 1s ease-out;
+        animation-fill-mode: forwards;
+        color:rgb(222, 255, 38);
+      }
+    `;
 
   document.head.appendChild(style);
   //nekoEl.addEventListener('click', explodeHearts);
