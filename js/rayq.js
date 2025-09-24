@@ -21,11 +21,11 @@
 
   const nekoEl = document.createElement("div");
 
-  let nekoPosX = 32;
-  let nekoPosY = 32;
+  let nekoPosX = 1294;
+  let nekoPosY = 114;
 
-  let mousePosX = 0;
-  let mousePosY = 0;
+  let mousePosX = nekoPosX;
+  let mousePosY = nekoPosY;
 
   let frameCount = 0;
   let idleTime = 0;
@@ -73,25 +73,10 @@
     nekoEl.style.backgroundImage = `url(${nekoFile})`;
 
     document.body.appendChild(nekoEl);
-/*
-    // Scroll.
-    document.addEventListener("wheel", function (event) {
-        // Check if the user is scrolling up AND is at the top of the page
-      if((event.deltaY < 0 && window.scrollY === 0) || (event.deltaY > 0 && window.scrollY === 0)) {
-        return;
-      }
-      // Check if the user is scrolling down AND is at the bottom of the page
-      if(event.deltaY > 0 && (window.scrollY + window.innerHeight) >= document.body.scrollHeight) {
-        return;
-      }
 
-      nekoPosY -= event.deltaY / 1.5;
-      updatePos();
-    });
-*/
     document.addEventListener("mousemove", function (event) {
       mousePosX = event.clientX;
-      mousePosY = event.clientY;
+      mousePosY = event.clientY + window.scrollY;
     });
 
     window.requestAnimationFrame(onAnimationFrame);
@@ -205,7 +190,7 @@
     const centerX = rect.left + rect.width / 2 + scrollLeft;
     const centerY = rect.top + rect.height / 2 + scrollTop;
   
-    let thunderCount = 20;
+    let thunderCount = 10;
     let delay = 0; // Starting delay in milliseconds
   
     for(let ii = 0; ii < thunderCount; ++ii) {
@@ -217,8 +202,8 @@
         heart.className = 'heart';
         heart.textContent = '⚡';
         
-        const offsetX = (Math.random() - 1) * 100;
-        const offsetY = (Math.random() - 1) * 100;
+        const offsetX = (Math.random() - 1.2) * 100;
+        const offsetY = (Math.random() - 1.5) * 100;
         
         heart.style.left = `${centerX + offsetX - 32}px`;
         heart.style.top = `${centerY + offsetY - 32}px`;
@@ -300,14 +285,13 @@
   }
 
 function updatePos() {
-  // Hide the cat if it is off-screen
-  if(nekoPosY > window.innerHeight) {
-    nekoEl.style.display = "none";
-  } else {
+  //if(nekoPosY > window.innerHeight) {  // Hide the cat if it is off-screen (Scroll mode)
+  //  nekoEl.style.display = "none";
+  //} else {
     nekoEl.style.display = "block";
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
-  }
+  //}
 }
 
   init();
