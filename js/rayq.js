@@ -8,6 +8,7 @@
   const FRAME_SPEED_MOVING = 50;
   const FRAME_SPEED_IDLE = 1000;
   const FRAME_RATE = -4;
+  const START_MOVING_DISTANCE = 400;
 
   let frameRate = 0;
   let frameSpeed = FRAME_SPEED_MOVING;
@@ -27,10 +28,12 @@
   let mousePosX = nekoPosX;
   let mousePosY = nekoPosY;
 
+  let startMoving  = 0;
+
   let frameCount = 0;
   let idleTime = 0;
-  let idleAnimation = null;
-  let idleAnimationFrame = 0;
+  let idleAnimation = "sleeping";
+  let idleAnimationFrame = 100;
 
   const spriteSets = { // col / row.
     idle:  [ [-1, -4], [-1, -3],],
@@ -250,6 +253,16 @@
     if(distance < NEKO_SPEED || distance < 128) {
       idle();
       return;
+    }
+
+    if(startMoving == 0) {
+      if(distance != 0 && distance < START_MOVING_DISTANCE) {
+        startMoving = 1;
+      } else {
+        idle();
+        return;
+      }
+
     }
 
     idleAnimation = null;
