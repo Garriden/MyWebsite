@@ -18,6 +18,7 @@
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s ease;
+    box-shadow: 0 0 20px 5px #53f19760; /* Adjust color and size as needed */
 }
 
 .social-button img {
@@ -42,7 +43,7 @@
     z-index: 1; /* Ensure it's on top of other elements */
 }
 
-.light-glow {
+.light-glow-pillar {
     box-shadow: 0 0 100px 50px #53f19760; /* White glow effect */
     border-radius: 100%;
     position: absolute; /* Match the position of the image */
