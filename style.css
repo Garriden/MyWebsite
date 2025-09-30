@@ -18,7 +18,7 @@
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s ease;
-    box-shadow: 0 0 20px 5px #53f19760; /* Adjust color and size as needed */
+    box-shadow: 0 0 20px 5px #c7cfed36; /* Adjust color and size as needed */
 }
 
 .social-button img {
