@@ -53,3 +53,26 @@
     height: 200px;
     z-index: 0; /* Place it behind the image */
 }
+
+#topBtn {
+  display: none;
+  position: fixed;
+  bottom: 62px;
+  right: 20px;
+  z-index: 99;
+  background-color: rgb(8, 51, 68);
+  color: white;
+  width: 48px;   /* Set a fixed width */
+  height: 48px;  /* Set an EQUAL fixed height */
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Makes the buttons perfectly circular */
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 20px 5px #c7cfed36; /* Adjust color and size as needed */
+}
+
+#topBtn:hover {
+    background-color: rgb(49, 108, 131);
+}
