@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .social-buttons {
     position: fixed;
     top: 60%;
@@ -65,7 +69,6 @@
   width: 48px;   /* Set a fixed width */
   height: 48px;  /* Set an EQUAL fixed height */
   font-size: 32px;
-  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%; /* Makes the buttons perfectly circular */
