@@ -1,0 +1,25 @@
+{
+  "name": "mywebsite",
+  "version": "1.0.0",
+  "description": "Welcome all!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Garriden/MyWebsite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Garriden/MyWebsite/issues"
+  },
+  "homepage": "https://github.com/Garriden/MyWebsite#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

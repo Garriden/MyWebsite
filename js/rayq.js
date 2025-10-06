@@ -182,6 +182,7 @@
   function Petting()
   {
     ++timesPettedThisSession;
+    incrementCounter();
 
     frameSpeed = 1; // change to scratch fast.
     idleAnimation = "scratchSelf";
@@ -241,8 +242,61 @@
     `;
 
   document.head.appendChild(style);
+
+
+  const SERVER_URL = 'http://localhost:3000';
+
+  const counterDisplay = document.getElementById('pet-counter');
+
+  // Function to fetch and display the current count (run on page load)
+  async function getAndUpdateCounter() {
+      try {
+          // Replace with your actual server endpoint
+          const response = await fetch(`${SERVER_URL}/api/get-neko-pet-count`); 
+          const data = await response.json();
+          counterDisplay.textContent = data.count; // Assuming the server returns { count: N }
+      } catch (error) {
+          console.error('Error fetching count:', error);
+      }
+  }
+
+async function incrementCounter() {
+    try {
+
+        // Replace with your actual server endpoint
+
+        const finalUrl = `${SERVER_URL}/api/increment-neko-pet-count`;
+        console.log('Attempting POST to:', finalUrl);
+        
+        const response = await fetch(finalUrl, {
+            method: 'POST', // Use POST to signal a change in data
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            // You might send a body here if necessary, but for a simple increment, it's optional
+        });
+        
+        const data = await response.json();
+        
+        // Update the displayed counter with the new count returned by the server
+        counterDisplay.textContent = data.newCount; 
+
+    } catch (error) {
+        console.error('Error incrementing count:', error);
+        // Optionally show an error to the user
+    }
+}
+
+// 3. Attach the event listener
   //nekoEl.addEventListener('click', explodeHearts);
-  nekoEl.addEventListener('click', Petting);
+nekoEl.addEventListener('click', Petting);
+
+// 4. Call the initial function to display the count when the page loads
+document.addEventListener('DOMContentLoaded', getAndUpdateCounter); 
+
+
+
+
 
   function frame() {
     ++frameCount;
