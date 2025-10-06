@@ -318,7 +318,63 @@
         <div class="container mx-auto max-w-4xl text-left">
             <h2 class="text-3xl font-bold mb-8 text-cyan-950">Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                
+                
+                
                 <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105 md:col-span-5">
+
+                       <video 
+                        id="bot-video" 
+                        loop 
+                        muted 
+                        playsinline 
+                        class="h-48 w-auto absolute top-8 right-8 rounded-xl"
+                    >
+                        <source src="icons/projects/EspantaLittle.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+
+                            
+                    <h3 class="font-bold text-xl pb-0">Autonomous bot for an online game</h3>
+                    <h3 class="font-bold text-l pb-4">From 2022</h3>
+                    <h3 class="font-bold text-l pb-4"></h3>
+                    
+                    <div class="text-gray-600 space-y-2">
+                        <p> - This bot iterate through a Roadmap to recolect resources automatically <br>   &nbsp;&nbsp;&nbsp;&nbsp;
+                                    while you are AFK.</p>
+                        <p></p>
+                        <p></p>
+
+                        <p> - You can add new roadmaps, recording a telemetry with this program.</p>
+                        <p></p>
+                        <p></p>
+
+                        <p> - When it encounters a resource protector, fights it and kills it!</p>
+                        <p></p>
+                        <p></p>
+                        <p> - This bot also works for training.  <br>   &nbsp;&nbsp;&nbsp;&nbsp;
+                            It iterates trough four maps finding the enemies on it and fighting them.</p>
+                        <p></p>
+                        <p></p>
+                        <p> - If your PJ dies, starts the roadmap again.</p>
+                        <p></p>
+                        <p></p>
+                        <p> - If your PJ dies and becomes a ghost, it goes to the closer fenix statue to resucitate and restart the roadmap.</p>
+                        <p></p>
+                        <p></p>
+                        <a href="https://github.com/Garriden/Dofus3Click" target="_blank" style="color: blue; text-decoration: underline;">github.com/Garriden/Dofus3Click</a>
+                    </div>
+                </div>
+
+
+
+
+
+
+
                                 
                 <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105 md:col-span-5">
 
@@ -633,36 +689,58 @@
 
     </script>
 
-<script> // VIDEO ARDUINO PARKING SCRIPT.
-    // 1. Get the video element
-    const video = document.getElementById('parking-video');
 
-    // 2. Define the observer options
-    // rootMargin: Defines a "margin" around the viewport. 
-    // '0px' means the video starts/stops exactly when its edge touches the viewport edge.
-    // threshold: 1.0 means the video must be 100% visible before playing.
-    const options = {
-        root: null, // Use the viewport as the container
-        rootMargin: '0px',
-        threshold: 0.5 // Start playing when 50% of the video is visible
-    };
 
-    // 3. Create the callback function
-    const callback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Video is visible (intersecting) - start playing
-                entry.target.play();
-            } else {
-                // Video is NOT visible - stop playing
-                entry.target.pause();
-            }
-        });
-    };
+<script>
+// --- Common Configuration for VIDEOS running ---
+const options = {
+    root: null, // Use the viewport as the container
+    rootMargin: '0px',
+    threshold: 0.5 // Start playing when 50% of the video is visible
+};
 
-    // 4. Create the observer and attach it to the video
-    const observer = new IntersectionObserver(callback, options);
-    observer.observe(video);
+// --- Single Callback Function (Works for both) ---
+const callback = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Video is visible (intersecting) - start playing
+            entry.target.play();
+        } else {
+            // Video is NOT visible - stop playing
+            entry.target.pause();
+            // Optional: You might also want to reset the video to the start (currentTime = 0)
+            // entry.target.currentTime = 0; 
+        }
+    });
+};
+
+
+// ----------------------------------------------------
+// --- 1. PARKING VIDEO SETUP (Your original code) ---
+// ----------------------------------------------------
+const parkingVideo = document.getElementById('parking-video');
+
+// Check if the element was found before observing
+if (parkingVideo) {
+    const parkingObserver = new IntersectionObserver(callback, options);
+    parkingObserver.observe(parkingVideo);
+} else {
+    console.error('Parking video element not found.');
+}
+
+
+// ----------------------------------------------------
+// --- 2. BOT VIDEO SETUP (The new code) ---
+// ----------------------------------------------------
+const botVideo = document.getElementById('bot-video');
+
+// Check if the element was found before observing
+if (botVideo) {
+    const botObserver = new IntersectionObserver(callback, options);
+    botObserver.observe(botVideo);
+} else {
+    console.error('Bot video element not found.');
+}
 
 </script>
 

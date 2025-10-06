@@ -22,8 +22,11 @@
 
   const nekoEl = document.createElement("div");
 
-  let nekoPosX = 1294;
-  let nekoPosY = 114;
+  //let nekoPosX = 1294;
+  //let nekoPosY = 114;
+
+  let nekoPosX = window.innerWidth - 234; // 150px from the right edge
+  let nekoPosY = 118;                      // 150px from the top edge
 
   let mousePosX = nekoPosX;
   let mousePosY = nekoPosY;
@@ -238,6 +241,7 @@
         animation: heartBurst 1s ease-out;
         animation-fill-mode: forwards;
         color:rgb(222, 255, 38);
+        z-index: 10;
       }
     `;
 
@@ -267,7 +271,7 @@ async function incrementCounter() {
 
         const finalUrl = `${SERVER_URL}/api/increment-neko-pet-count`;
         console.log('Attempting POST to:', finalUrl);
-        
+
         const response = await fetch(finalUrl, {
             method: 'POST', // Use POST to signal a change in data
             headers: {
