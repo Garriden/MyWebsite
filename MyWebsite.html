@@ -578,24 +578,30 @@
     </script>
 
 
+
     <!-- Contact me -->
     <section id="contact" class="py-1600 py-8 px-8">
         <div class="container mx-auto max-w-4xl text-left">
             <h2 class="text-4xl font-bold text-cyan-950 px-6">
                 Contact me
             </h2>
+            
 
             <div class="relative z-10 p-4 md:p-6 flex flex-col flex-grow">
-                <form class="space-y-3">
+                <!-- The message is really sent on the script bellow. -->
+                <form id="contact-form" class="space-y-3"
+                    action="https://formspree.io/f/manpbkyb"
+                    method="POST"
+                >
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div>
-                            <input required="" placeholder="Your Name" 
+                            <input required="" placeholder="Your Name"
                             class="w-full px-4 py-3 text-sm rounded-xl backdrop-blur-xl border" 
-                            type="text" value="" name="senderName" 
+                            type="name" value="" name="senderName" 
                             style="color: hsl(var(--foreground)); background: hsl(var(--glass-bg)); border-color: hsl(var(--glass-border));">
                         </div>
                         <div>
-                            <input required="" placeholder="Your Email" 
+                            <input required="" placeholder="Your Email"
                             class="w-full px-4 py-3 text-sm rounded-xl backdrop-blur-xl border outline-none" 
                             type="email" value="" name="senderEmail" 
                             style="color: hsl(var(--foreground)); background: hsl(var(--glass-bg)); border-color: hsl(var(--glass-border));">
@@ -610,15 +616,8 @@
                 </div>
             
                 <button type="submit" class="w-1/4 bg-cyan-950 text-white px-4 py-3 rounded-xl font-medium text-base flex items-center justify-center gap-2 relative overflow-hidden transition-colors transform hover:bg-cyan-800">
-                    <div>
-                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="w-5 h-5" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"> 
-                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"></path>
-                        </svg>
-                    </div>
                     Send Message
                 </button>
-
-
 
             </form>
         </div>
@@ -746,6 +745,61 @@ if (botVideo) {
 </script>
 
 
+
+<div id="modal-backdrop" class="hidden fixed inset-0 z-[1000] flex items-center justify-center bg-black/50">
+    
+    <div id="success-message" class="bg-white p-8 rounded-2xl shadow-2xl transform transition-all duration-300 max-w-sm w-full border-t-4 border-cyan-950 text-center">
+        <svg class="mx-auto h-12 w-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <h3 class="mt-2 text-3xl font-bold text-cyan-950">Success!</h3>
+        <p class="mt-1 text-cyan-900">Thanks! Your message has been sent successfully.</p>
+    </div>
+</div>
+
+
+
+<script> // Erase message once is sent in contact me.
+    // 1. Get the form and the new modal container element
+    const form = document.getElementById('contact-form');
+    const modalBackdrop = document.getElementById('modal-backdrop'); // Target the outer container
+    
+    // Your Formspree URL
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/manpbkyb';
+
+    // 2. Add an event listener to intercept the submission
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); 
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if(response.ok) {
+                // 3. Submission was successful:
+                form.reset(); // Clear the form fields
+                
+                // 4. SHOW the centered pop-up (Remove the 'hidden' class)
+                modalBackdrop.classList.remove('hidden');
+                
+                // 5. Hide the pop-up after 5 seconds
+                setTimeout(() => {
+                    modalBackdrop.classList.add('hidden');
+                }, 5000); 
+
+            } else {
+                alert('Oops! There was an error submitting the form.');
+            }
+        } catch (error) {
+            alert('An unexpected error occurred. Please try again later.');
+        }
+    });
+</script>
 
 
 
