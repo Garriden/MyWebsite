@@ -23,7 +23,7 @@
     <!-- Header -->
     <header class="bg-gray-10 shadow-lg">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-cyan-950">Marc Garrido Casas</a>
+            <a href="#" class="text-xl px-2 font-bold text-cyan-950">Marc Garrido Casas</a>
             <nav>
                 <ul class="flex space-x-4 text-gray-600 font-medium">
                     <li><a href="#" class="hover:text-cyan-900 transition-colors">Home</a></li>
@@ -37,8 +37,13 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-cyan-950 text-white py-32 px-4 text-center">
-        <div class="container mx-auto">
+    <section id="hero" class="bg-cyan-950 text-white py-32 px-4 text-center">
+
+        <div class="absolute light-glow-pillar hidden xl:block z-0"> </div>
+        <img src="images/skyPillarTransparent.png" alt="SkyPillar" class="skyPillar-image hidden xl:block z-0">
+    
+        <div class="container mx-auto px-4 text-center z-10 transition-transform duration-500 xl:-translate-y-20">
+            
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8">
                 Embedded software engineer.
             </h1>
@@ -51,7 +56,7 @@
             </p>
 
             
-            <div class="flex items-center space-x-10 justify-center">
+            <div class="flex items-center space-x-4 justify-center">
                 <a href="CV/MarcGarridoCasasCV.pdf" target="_blank" class="bg-white text-cyan-950 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition-colors transform hover:scale-105">
                     CV
                 </a>
@@ -82,15 +87,18 @@
             </p>
 
 
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+            <div class="grid grid-cols-2 md:grid-cols-2 gap-10">
 
-                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105 md:col-span-3">
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105 md:col-span-1">
 
 
                     <img 
                         src="icons/logos/upc.png" 
                         alt="upc Logo" 
-                        class="h-24 w-auto absolute top-2 right-2" 
+                        class="h-24 w-auto absolute top-10 right-6
+                        opacity-30 scale-150 
+                        lg:opacity-100 lg:scale-80  md:top-6 md:right-6
+                        transition-all duration-500 ease-in-out origin-center"
                     >
                    
 
@@ -104,13 +112,16 @@
 
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105 md:col-span-2">
+                <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105 md:col-span-1">
                     <h3 class="font-bold text-xl mb-6 pb-4">Data Science</h3>
                                         
                     <img 
                         src="icons/logos/uoc.png" 
                         alt="upc Logo" 
-                        class="h-12 w-auto absolute top-6 right-2" 
+                        class="h-12 w-auto absolute top-10 right-20 
+                        opacity-30 scale-80 
+                        lg:opacity-100 lg:scale-80  md:top-6 md:right-14
+                        transition-all duration-500 ease-in-out"
                     >
 
 
@@ -127,12 +138,6 @@
 
 
 
-    
-
-
-
-
-
 
 
     <!-- Experience Section -->
@@ -141,14 +146,17 @@
         
 
 
-            <div class="grid grid-cols-5 md:grid-cols-5 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
 
                 <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-105 md:col-span-5">
 
                             <img 
                                 src="icons/logos/DD.png" 
                                 alt="DeepDetection Logo" 
-                                class="h-40 w-auto absolute top-0 right-2" 
+                                class="h-40 w-auto absolute top-10 right-20 
+                                opacity-30 scale-150 
+                                md:opacity-100 md:scale-80  md:top-0 md:right-6
+                                transition-all duration-500 ease-in-out"
                             >
                             
                     <h3 class="font-bold text-xl pb-0">DeepDetection</h3>
@@ -170,7 +178,10 @@
                             <img 
                                 src="icons/logos/fico.png" 
                                 alt="fico Logo" 
-                                class="h-20 w-auto absolute top-6 right-6" 
+                                class="h-24 w-auto absolute top-24 right-24 
+                                opacity-30 scale-150 
+                                md:opacity-100 md:scale-100  md:top-6 md:right-6
+                                transition-all duration-500 ease-in-out"
                             >
                             
                     <h3 class="font-bold text-xl pb-0">Ficosa</h3>
@@ -195,7 +206,10 @@
                             <img 
                                 src="icons/logos/Derivco.png" 
                                 alt="Derivco Logo" 
-                                class="h-32 w-auto absolute top-8 right-8" 
+                                class="h-32 w-auto absolute top-24 right-24 
+                                opacity-30 scale-150 
+                                md:opacity-100 md:scale-100  md:top-8 md:right-8
+                                transition-all duration-500 ease-in-out"
                             >
                             
                     <h3 class="font-bold text-xl pb-0">Derivco Sports, Betway</h3>
@@ -219,7 +233,10 @@
                             <img 
                                 src="icons/logos/hp.png" 
                                 alt="HP Logo" 
-                                class="h-40 w-auto absolute top-8 right-8" 
+                                class="h-40 w-auto absolute top-24 right-24 
+                                opacity-30 scale-150 
+                                md:opacity-100 md:scale-100  md:top-8 md:right-8
+                                transition-all duration-500 ease-in-out"
                             >
                             
                     <h3 class="font-bold text-xl pb-0">HP</h3>
@@ -228,7 +245,8 @@
                     
                     <div class="text-gray-600 space-y-2">
                         <p>Large Format Printers.</p>
-                        <p>Added new functionalities, fixed bugs, and added Gtests with C++.</p>
+                        <p>Added new functionalities.</p>
+                        <p>Bug fixing, added Gtests with C++.</p>
                         <p>Successfully developed C++ code for real-time servo movements.</p>
                         <p>Achieved a 2x increase in printing speed while maintaining quality.</p>
                         <p>Improved the lifespan of a printer motor by 4x and redesigned its movement.</p>
@@ -253,7 +271,10 @@
                             <img 
                                 src="icons/logos/promax.png" 
                                 alt="promax Logo" 
-                                class="h-36 w-auto absolute top-8 right-8" 
+                                class="h-28 w-auto absolute top-14 right-14 
+                                opacity-30 scale-150 
+                                md:opacity-100 md:scale-100  md:top-6 md:right-6
+                                transition-all duration-500 ease-in-out"
                             >
                             
                     <h3 class="font-bold text-xl pb-0">Promax Electronics</h3>
@@ -277,7 +298,10 @@
                             <img 
                                 src="icons/logos/rearsim.png" 
                                 alt="rearsim Logo" 
-                                class="h-28 w-auto absolute top-8 right-8" 
+                                class="h-28 w-auto absolute top-14 right-14 
+                                opacity-30 scale-150 
+                                md:opacity-100 md:scale-100  md:top-6 md:right-6
+                                transition-all duration-500 ease-in-out"
                             >
                             
                     <h3 class="font-bold text-xl pb-0">Promax Electronics</h3>
@@ -330,7 +354,10 @@
                         loop 
                         muted 
                         playsinline 
-                        class="h-48 w-auto absolute top-8 right-8 rounded-xl"
+                        class="h-48 w-auto absolute top-36 right-12 rounded-xl
+                        opacity-25 scale-125 
+                        lg:opacity-100 lg:scale-100  lg:top-8 lg:right-8
+                        transition-all duration-500 ease-in-out"
                     >
                         <source src="icons/projects/EspantaLittle.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -381,7 +408,10 @@
                             <img 
                                 src="icons/projects/webEntrades.png" 
                                 alt="webEntrades Logo" 
-                                class="h-64 w-auto absolute top-8 right-8" 
+                                class="h-64 w-auto absolute top-32 right-12 rounded-xl
+                                opacity-25 scale-100 
+                                lg:opacity-100 lg:scale-100  lg:top-8 lg:right-8
+                                transition-all duration-500 ease-in-out"
                             >
                             
                     <h3 class="font-bold text-xl pb-0">Web scraping and Statistics</h3>
@@ -427,7 +457,10 @@
                         loop 
                         muted 
                         playsinline 
-                        class="h-52 w-auto absolute top-8 right-8 rounded-xl"
+                        class="h-52 w-auto absolute top-12 right-2 rounded-xl
+                        opacity-25 scale-75 
+                        lg:opacity-100 lg:scale-100  lg:top-8 lg:right-8
+                        transition-all duration-500 ease-in-out"
                     >
                         <source src="icons/projects/parkinF.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -481,14 +514,17 @@
 
 
 
-        <div class="grid grid-cols-2 md:grid-cols-2 gap-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
 
-            <div class="bg-white p-6 rounded-xl shadow-lg transform transition-transform hover:scale-110 relative">
+            <div class="bg-white p-1 rounded-xl shadow-lg transform transition-transform hover:scale-110 relative">
 
                 <img 
                     src="icons/projects/heuristics.svg" 
                     alt="airport Logo" 
-                    class="h-28 w-auto absolute top-20 right-8" 
+                    class="h-28 w-auto absolute top-12 right-6 
+                    opacity-30 scale-100 
+                    lg:opacity-100 lg:scale-100  lg:top-12 lg:right-8
+                    transition-all duration-500 ease-in-out"
                 >
                 
                 <h3 class="font-bold text-xl pb-0">Airport management program</h3>
@@ -507,7 +543,10 @@
                 <img 
                     src="icons/projects/scratch.webp"
                     alt="scratch Logo" 
-                    class="h-28 w-auto absolute top-16 right-2" 
+                    class="h-28 w-auto absolute top-12 right-2 
+                    opacity-30 scale-100 
+                    lg:opacity-100 lg:scale-100  lg:top-12 lg:right-2
+                    transition-all duration-500 ease-in-out"
                 >
                 
                 <h3 class="font-bold text-xl pb-0">CodeClub Biblioteques</h3>
@@ -543,7 +582,7 @@
 
 
     <!-- Social buttons -->
-    <div class="social-buttons">
+    <div id="socialBtnContainer" class="social-buttons hidden lg:flex lg:flex-col sm:space-y-1">
         <a href="mailto:garridocho@gmail.com?subject=Contact from your website" class="social-button">
             <img src="icons/email-white3big.png" alt="Email Icon">
         </a>
@@ -559,8 +598,11 @@
     </div>
 
     <button onclick="topFunction()" id="topBtn" title="Go to top">⬆</button>
-    <script>
+
+    <script> // Scroll.
         let mybutton = document.getElementById("topBtn");
+        let socialButtons = document.getElementById("socialBtnContainer");
+
         window.onscroll = function() {scrollFunction()};
 
         function scrollFunction() {
@@ -569,6 +611,14 @@
             } else {
                 mybutton.style.display = "none";
             }
+
+            //if(document.body.scrollTop > 6000 || document.documentElement.scrollTop > 6000) {
+            //    if(socialButtons.style.display === 'none') {
+            //        socialButtons.style.display = "flex"; 
+            //    }
+            //} else {
+            //    socialButtons.style.display = "none";
+            //}
         }
 
         function topFunction() {
@@ -580,7 +630,7 @@
 
 
     <!-- Contact me -->
-    <section id="contact" class="py-1600 py-8 px-8">
+    <section id="contact" class="py-1600 py-8 px-16">
         <div class="container mx-auto max-w-4xl text-left">
             <h2 class="text-4xl font-bold text-cyan-950 px-6">
                 Contact me
@@ -615,7 +665,7 @@
                         ></textarea>
                 </div>
             
-                <button type="submit" class="w-1/4 bg-cyan-950 text-white px-4 py-3 rounded-xl font-medium text-base flex items-center justify-center gap-2 relative overflow-hidden transition-colors transform hover:bg-cyan-800">
+                <button type="submit" class="w-1/2 bg-cyan-950 text-white px-4 py-3 rounded-xl font-medium text-base flex items-center justify-center gap-2 relative overflow-hidden transition-colors transform hover:bg-cyan-800">
                     Send Message
                 </button>
 
@@ -625,33 +675,50 @@
     </section>
 
 
+    <section id="beforeFuter" class="py-100 py-0 px-16">
+        <div class="container mx-auto"> 
+                
+            <div class="flex justify-center space-x-3 mb-4">
+                <a href="mailto:garridocho@gmail.com?subject=Contact from your website" class="social-button">
+                    <img src="icons/email-white3big.png" alt="Email Icon" class="h-6 w-6"> 
+                </a>
+                <a href="https://www.linkedin.com/in/marcgarrido" class="social-button linkedin" target="_blank">
+                    <img src="icons/linkedin-full-white.png" alt="LinkedIn" class="h-6 w-6">
+                </a>
+                <a href="https://github.com/Garriden" class="social-button github" target="_blank">
+                    <img src="icons/github-mark-white.png" alt="GitHub" class="h-6 w-6">
+                </a>
+                <a href="CV/MarcGarridoCasasCV.pdf" download="MarcGarridoCasasCV.pdf" class="social-button" target="_blank">
+                    <img src="icons/resume-white.png" alt="Download Icon" class="h-6 w-6">
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-<footer id="futer" class="bg-cyan-950 text-white py-4 px-4 text-center">
-    <div class="container mx-auto flex items-center justify-between">
-        <div class="w-1/3 text-left">
-            <p>Garridocho@gmail.com</p>
+    <footer id="futer" class="bg-cyan-950 text-white py-4 px-4 text-center">
+        <div class="container mx-auto flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
+            
+            <div class="sm:w-1/3 sm:text-left">
+                <p>Garridocho@gmail.com</p>
+            </div>
+    
+            <div class="sm:w-1/3 text-center">
+                <p>&copy; 2025. All rights reserved.</p>
+            </div>
+            
+            <div class="sm:w-1/3 sm:text-right">
+                <p class="hidden sm:block">Rayquaza loves to be petted</p>
+            </div>
+            
         </div>
-        <div class="w-1/3 text-center">
-            <p>&copy; 2025. All rights reserved.</p>
-        </div>
-        <div class="w-1/3 text-right">
-            <p>Rayquaza loves to be petted</p>
-            <!-- <p>Times Rayquaza has been petted: <span id="pet-counter">0</span></p> -->
-        </div>
-    </div>
-</footer>
-
+    </footer>
 
     <!-- Oneko cat follower (Rayquaza) -->
     <!-- <script src="./js/oneko.js"></script> -->
     <script src="./js/rayq.js"></script>
     
     
-    <div class="absolute light-glow-pillar"> </div>
-    <img src="images/skyPillarTransparent.png" alt="SkyPillar" class="skyPillar-image">
-    
-
 
 
     <!-- JavaScript for interactivity -->
