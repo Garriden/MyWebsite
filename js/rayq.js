@@ -185,7 +185,7 @@
   function Petting()
   {
     ++timesPettedThisSession;
-    incrementCounter();
+    //incrementCounter();
 
     frameSpeed = 1; // change to scratch fast.
     idleAnimation = "scratchSelf";
@@ -253,6 +253,7 @@
   const counterDisplay = document.getElementById('pet-counter');
 
   // Function to fetch and display the current count (run on page load)
+  /*
   async function getAndUpdateCounter() {
       try {
           // Replace with your actual server endpoint
@@ -263,7 +264,8 @@
           console.error('Error fetching count:', error);
       }
   }
-
+*/
+/*
 async function incrementCounter() {
     try {
 
@@ -290,13 +292,13 @@ async function incrementCounter() {
         // Optionally show an error to the user
     }
 }
-
+*/
 // 3. Attach the event listener
   //nekoEl.addEventListener('click', explodeHearts);
 nekoEl.addEventListener('click', Petting);
 
 // 4. Call the initial function to display the count when the page loads
-document.addEventListener('DOMContentLoaded', getAndUpdateCounter); 
+//document.addEventListener('DOMContentLoaded', getAndUpdateCounter); 
 
 
 
