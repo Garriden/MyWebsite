@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /CV/
+Allow: /images/
+
+# Sitemaps
+Sitemap: https://yourdomain.com/sitemap.xml

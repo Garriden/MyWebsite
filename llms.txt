@@ -1,0 +1,26 @@
+# Marc Garrido Casas - Portfolio
+Embedded Software & Firmware Engineer specializing in High Performance Computing (HPC) and modern C++.
+
+## About
+- Eight years of experience in Low-level programming, Real-time systems, and software efficiency.
+- Expertise: Modern C++ (C++17/20), C, Python, and Golang.
+- Education: Informatics Engineering (UPC), Master’s in Data Science (UOC).
+
+## Experience
+- **DeepDetection (2023-2025):** Senior Embedded Software Engineer. Optimized X-ray cameras using C++20.
+- **Ficosa (2022-2023):** Senior Embedded Software Engineer. ADAS Automotive and Bootloader development (AUTOSAR).
+- **Derivco Sports (2021-2023):** Backend Software Engineer. Golang refactoring and DevOps.
+- **HP (2019-2021):** Firmware Engineer. Real-time servo movement and printing speed optimization.
+- **Promax Electronics (2019):** Firmware Engineer. FM decoder implementation.
+- **Rearsim (2017-2019):** Computer Engineer. Motorcycle simulator control systems.
+
+## Projects
+- **Dofus3Click:** Autonomous bot for online games (Telemetry & Pathfinding).
+- **Web Scraping & Stats:** Automated ticket booking and sports data processing.
+- **Arduino Projects:** Parking sensors, alcoholimeters, and mechanical automation.
+- **Airport Management:** C++ program using heuristics for logistics.
+
+## Contact
+- Email: garridocho@gmail.com
+- LinkedIn: https://www.linkedin.com/in/marcgarrido
+- GitHub: https://github.com/Garriden
