@@ -640,8 +640,12 @@
         window.onscroll = function() {scrollFunction()};
 
         function scrollFunction() {
-            if (document.body.scrollTop > 550 || document.documentElement.scrollTop > 550) {
-                mybutton.style.display = "block";
+            if(document.body.scrollTop > 550 || document.documentElement.scrollTop > 550) {
+                if(window.innerWidth > 640) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
             } else {
                 mybutton.style.display = "none";
             }
@@ -709,7 +713,7 @@
     </section>
 
 
-    <section id="beforeFuter" class="py-100 py-0 px-16">
+    <section id="beforeFuter" class="py-100 py-0 px-0">
         <div class="container mx-auto"> 
                 
             <div class="flex justify-center space-x-3 mb-4">

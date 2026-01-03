@@ -18,8 +18,10 @@ html {
     height: 50px;
     background-color: rgb(8, 51, 68);
     border-radius: 50%; /* Makes the buttons perfectly circular */
-    display: flex;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    padding: 0;   /* Extra padding can turn a circle into an oval */
     align-items: center;
     transition: background-color 0.3s ease;
     box-shadow: 0 0 20px 5px #c7cfed36; /* Adjust color and size as needed */
